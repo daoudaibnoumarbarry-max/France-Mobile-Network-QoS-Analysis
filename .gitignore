@@ -1,0 +1,5 @@
+.venv/
+__pycahe__/
+*.__pyc
+.ipynb_cheickpoints/
+data/raw/
