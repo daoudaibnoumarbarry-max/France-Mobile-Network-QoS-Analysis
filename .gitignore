@@ -2,4 +2,11 @@
 __pycahe__/
 *.__pyc
 .ipynb_cheickpoints/
+
 data/raw/
+data/processed/
+
+README_OLD.md
+
+notebooks/*.ipynb
+!notebooks/02_radio_qos_portfolio_V2.ipynb
