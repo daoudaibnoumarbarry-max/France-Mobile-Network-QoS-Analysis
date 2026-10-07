@@ -109,6 +109,36 @@ For some figures, groups with fewer than **100 observations** are hidden to redu
 
 ---
 
+## Visual highlights
+
+The repository includes selected figures so the main engineering results can be reviewed directly from GitHub without running the notebook.
+
+### Downlink throughput at comparable RSRP levels
+
+![Median downlink bitrate by RSRP range and operator](reports/figures/dl_median_by_rsrp_operator.png)
+
+This view compares operator medians inside common RSRP classes rather than relying only on raw operator averages.
+
+### Uplink throughput versus RSRP
+
+![Median uplink bitrate by RSRP range](reports/figures/ul_median_by_rsrp.png)
+
+The monotonic rise illustrates the strong association observed between RSRP and uplink throughput.
+
+### WEB loading success and the plateau effect
+
+![WEB loading success rate by RSRP range](reports/figures/web_success_by_rsrp.png)
+
+WEB loading success improves rapidly as radio conditions move from weak to intermediate, then approaches a high-success plateau.
+
+### WEB access-duration timeout signature
+
+![Distribution of WEB access duration](reports/figures/web_access_duration_timeout_spike.png)
+
+The concentration around 10 seconds is why timeout observations are treated separately instead of as ordinary continuous duration measurements.
+
+---
+
 ## Key findings
 
 ### 1. Radio conditions and throughput
@@ -185,13 +215,14 @@ France-Mobile-Network-QoS-Analysis/
 │       └── 2025_QoS_Metropole_data_habitations_clean.csv
 │
 ├── notebooks/
-│   └── 02_radio_qos_portfolio_V2.ipynb
+│   └── radio_qos_analysis.ipynb
 │
 ├── reports/
 │   └── figures/
 │
 ├── README.md
 ├── requirements.txt
+├── LICENSE
 └── .gitignore
 ```
 
@@ -215,6 +246,13 @@ Create a virtual environment:
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
+```
+
+### macOS / Linux
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
 ```
 
 Install the dependencies:
