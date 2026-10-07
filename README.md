@@ -320,3 +320,4 @@ When the full file is present, it is automatically preferred over the sample. Th
 
 **Daouda Barry**  
 Telecommunications / Radio Network Engineering
+LinkedIn: https://www.linkedin.com/in/daouda-barry-b02680182/
