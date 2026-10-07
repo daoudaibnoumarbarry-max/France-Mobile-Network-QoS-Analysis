@@ -45,6 +45,10 @@ The raw dataset contains **354,282 observations and 103 columns** before cleanin
 
 The notebook preserves the original raw file and creates a separate processed dataset after removing unusable columns and preparing the variables required for the analysis.
 
+A reproducible **5,000-row public sample** is also included in `data/sample/`. It was drawn from the same ARCEP source with `random_state=42` and contains all four operators and all protocols used in the project. It is intended for a quick code-execution check only.
+
+> **Important:** all published findings, numerical results and portfolio figures in this repository were produced from the complete 354,282-row ARCEP dataset, not from the 5,000-row sample.
+
 ### Official sources
 
 - ARCEP Open Data — Mobile QoS measurements  
@@ -211,8 +215,10 @@ France-Mobile-Network-QoS-Analysis/
 ├── data/
 │   ├── raw/
 │   │   └── 2025_QoS_Metropole_data_habitations.csv
-│   └── processed/
-│       └── 2025_QoS_Metropole_data_habitations_clean.csv
+│   ├── processed/
+│   │   └── 2025_QoS_Metropole_data_habitations_clean.csv
+│   └── sample/
+│       └── 2025_QoS_Metropole_data_habitations_sample.csv
 │
 ├── notebooks/
 │   └── radio_qos_analysis.ipynb
@@ -226,7 +232,7 @@ France-Mobile-Network-QoS-Analysis/
 └── .gitignore
 ```
 
-The raw and processed CSV files are intentionally excluded from Git by default because of their size. Download the source dataset from ARCEP and place it in `data/raw/`.
+The full raw and processed CSV files are intentionally excluded from Git by default because of their size. The small file in `data/sample/` is tracked so that the notebook can be executed immediately after cloning the repository.
 
 ---
 
@@ -267,21 +273,36 @@ Then open the notebook in VS Code or Jupyter and run all cells from top to botto
 
 ## Reproducibility
 
-The notebook uses project-relative paths:
+The notebook uses project-relative paths and supports two execution modes.
+
+### Quick run with the included sample
+
+After cloning the repository:
+
+1. Activate the Python environment.
+2. Install `requirements.txt`.
+3. Open `notebooks/radio_qos_analysis.ipynb`.
+4. Run all cells.
+
+If the complete raw dataset is not present, the notebook automatically uses:
 
 ```text
-../data/raw/
-../data/processed/
+../data/sample/2025_QoS_Metropole_data_habitations_sample.csv
 ```
 
-To reproduce the analysis:
+The sample contains 5,000 real ARCEP observations and is intended to demonstrate that the workflow executes end to end. In sample mode, the minimum group size used only for line-chart visibility is reduced from 100 to 20 observations.
 
-1. Download the ARCEP 2025 metropolitan dataset.
+### Full analysis
+
+To reproduce the published findings and figures:
+
+1. Download the complete ARCEP 2025 metropolitan dataset.
 2. Place `2025_QoS_Metropole_data_habitations.csv` in `data/raw/`.
 3. Activate the Python environment.
 4. Install `requirements.txt`.
-5. Run the portfolio notebook from the `notebooks/` directory.
-6. Verify that the notebook runs from a clean kernel without errors.
+5. Run `notebooks/radio_qos_analysis.ipynb` from a clean kernel.
+
+When the full file is present, it is automatically preferred over the sample. The full-analysis visualization rule remains **100 observations per displayed group**.
 
 ---
 
